@@ -3,14 +3,14 @@ namespace GameBackend.Models;
 public class Game
 {
     // Atributos
-    private int gameId;
+    private Guid gameId; // uuid
 
     private string name;
 
     private bool status;
 
     // Propriedades (Com a propriedades não é necessario criar metodos  GET/SET)
-    public int GameId 
+    public Guid GameId 
     {
         get { return gameId; }
         set { gameId = value; }

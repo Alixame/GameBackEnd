@@ -7,25 +7,52 @@ namespace GameBackend.Controllers;
 [Route("game")]
 public class GameController : ControllerBase
 {
-    List<Game> lista = new List<Game>();
+    static List<Game> listGame = new List<Game>();
 
     [HttpGet]
-    public ActionResult Get() 
+    public ActionResult Index() 
     {
-        Game g1 = new Game();
-        g1.GameId = 1;
-        g1.Name = "Lucas Lindao";
-        g1.Status = true;
-
-        lista.Add(g1);
-
-        return Ok(lista);
+        return Ok(listGame);
     }
 
     [HttpPost]
-    public ActionResult Post() 
+    public ActionResult Store(Game newGame) 
     {
-        return Ok("game criado");
+        newGame.GameId = Guid.NewGuid();
+
+        listGame.Add(newGame);
+
+        return Created(newGame.GameId.ToString(), newGame);
+    }
+
+    [HttpPut]
+    [Route("{id}")]
+    public ActionResult Update(Guid id, Game gameForUpdate)
+    {
+        foreach (Game game in listGame)
+        {
+            if (game.GameId == id)
+            {
+                game.Name = gameForUpdate.Name;
+                game.Status = gameForUpdate.Status;
+            }
+        }
+        return NotFound();
+    }
+
+    [HttpDelete]
+    [Route("{id}")]
+    public ActionResult Delete(Guid id)
+    {
+        foreach (Game game in listGame)
+        {
+            if (game.GameId == id)
+            {
+                listGame.Remove(game);
+                return Ok($"Apagou o id: {id}");
+            }
+        }
+        return NotFound();
     }
 }
     
