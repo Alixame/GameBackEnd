@@ -25,3 +25,10 @@ C:\Users\lucas\Desktop\c#\Game\GameBackend\bin\Debug\net6.0\Swashbuckle.AspNetCo
 C:\Users\lucas\Desktop\c#\Game\GameBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\lucas\Desktop\c#\Game\GameBackend\obj\Debug\net6.0\GameBackend.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\lucas\Desktop\c#\Game\GameBackend\obj\Debug\net6.0\GameBackend.csproj.CopyComplete
+C:\Users\lucas\Desktop\c#\Game\GameBackend\bin\Debug\net6.0\Humanizer.dll
+C:\Users\lucas\Desktop\c#\Game\GameBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\lucas\Desktop\c#\Game\GameBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\lucas\Desktop\c#\Game\GameBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\lucas\Desktop\c#\Game\GameBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\lucas\Desktop\c#\Game\GameBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\lucas\Desktop\c#\Game\GameBackend\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll

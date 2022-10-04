@@ -7,52 +7,60 @@ namespace GameBackend.Controllers;
 [Route("game")]
 public class GameController : ControllerBase
 {
-    static List<Game> listGame = new List<Game>();
+    //static List<Game> listGames = new List<Game>();
+
+    private DBGame db;
+
+    public GameController(DBGame db)
+    {
+        this.db = db;
+    }
 
     [HttpGet]
     public ActionResult Index() 
     {
-        return Ok(listGame);
+        return Ok(db.Games.ToList());
     }
 
     [HttpPost]
     public ActionResult Store(Game newGame) 
     {
-        newGame.GameId = Guid.NewGuid();
-
-        listGame.Add(newGame);
+        db.Games.Add(newGame);
+        db.SaveChanges();
 
         return Created(newGame.GameId.ToString(), newGame);
     }
 
     [HttpPut]
     [Route("{id}")]
-    public ActionResult Update(Guid id, Game gameForUpdate)
+    public ActionResult Update(int id, Game gameForUpdate)
     {
-        foreach (Game game in listGame)
-        {
-            if (game.GameId == id)
-            {
-                game.Name = gameForUpdate.Name;
-                game.Status = gameForUpdate.Status;
-            }
+        Game? game = db.Games.Find(id);
+        
+        if (game == null) {
+            return NotFound();
         }
-        return NotFound();
+
+        game.Name = gameForUpdate.Name;
+        game.Status = gameForUpdate.Status;
+
+        db.SaveChanges();
+        return Ok(game);
     }
 
     [HttpDelete]
     [Route("{id}")]
-    public ActionResult Delete(Guid id)
+    public ActionResult Delete(int id)
     {
-        foreach (Game game in listGame)
-        {
-            if (game.GameId == id)
-            {
-                listGame.Remove(game);
-                return Ok($"Apagou o id: {id}");
-            }
+        Game? game = db.Games.Find(id);
+        
+        if (game == null) {
+            return NotFound();
         }
-        return NotFound();
+
+        db.Games.Remove(game);
+        db.SaveChanges();
+        return Ok(game);
     }
 }
     

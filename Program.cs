@@ -1,3 +1,6 @@
+using GameBackend.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace GameBackend;
 
 public class Program 
@@ -8,6 +11,7 @@ public class Program
 
         // DEFININDO SERVIÇOS A SEREM USADOS NO PROJETO
         builder.Services.AddControllers();
+        builder.Services.AddDbContext<DBGame>(option => option.UseInMemoryDatabase("db"));
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
