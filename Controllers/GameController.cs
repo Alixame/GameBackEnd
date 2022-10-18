@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GameBackend.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace GameBackend.Controllers;
 
@@ -19,7 +21,7 @@ public class GameController : ControllerBase
     [HttpGet]
     public ActionResult Index() 
     {
-        return Ok(db.Games.ToList());
+        return Ok(db.Games.Include(g => g.User).Include(g => g.Quizzes).ToList());
     }
 
     [HttpPost]

@@ -11,7 +11,12 @@ public class Program
 
         // DEFININDO SERVIÇOS A SEREM USADOS NO PROJETO
         builder.Services.AddControllers();
-        builder.Services.AddDbContext<DBGame>(option => option.UseInMemoryDatabase("db"));
+        //builder.Services.AddDbContext<DBGame>(option => option.UseInMemoryDatabase("db"));
+        
+        string strConnection = builder.Configuration.GetConnectionString("DBdefault");
+
+        builder.Services.AddDbContext<DBGame>(option => option.UseSqlServer(strConnection));
+        
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 

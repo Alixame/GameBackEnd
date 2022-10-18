@@ -40,7 +40,7 @@ public class UserController : ControllerBase
         }
 
         user.Name = userForUpdate.Name;
-        user.Gmail = userForUpdate.Gmail;
+        user.Email = userForUpdate.Email;
         user.Password = userForUpdate.Password;
 
         db.SaveChanges();
